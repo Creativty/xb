@@ -1,25 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   strlen.c                                           :+:      :+:    :+:   */
+/*   unix_uptime.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aindjare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/13 12:58:49 by aindjare          #+#    #+#             */
-/*   Updated: 2024/05/14 11:08:13 by aindjare         ###   ########.fr       */
+/*   Created: 2024/05/14 10:45:37 by aindjare          #+#    #+#             */
+/*   Updated: 2024/05/14 13:35:06 by aindjare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "xb.h"
-#include <limits.h>
+#include <stdlib.h>
 
-int	xb_strlen(const char *str)
+double	xb_unix_uptime(void)
 {
-	int	len;
+	char	*filedata;
+	double	uptime;
 
-	len = 0;
-	if (str != NULL)
-		while (str[len] && len < INT_MAX)
-			len++;
-	return (len);
+	filedata = xb_unix_read_file("/proc/uptime");
+	if (!filedata)
+		return (-1.0);
+	uptime = xb_atod(filedata);
+	return (free(filedata), uptime);
 }

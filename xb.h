@@ -6,7 +6,7 @@
 /*   By: abderrahim <marvin@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/12 15:25:18 by abderrahim        #+#    #+#             */
-/*   Updated: 2024/05/14 09:49:40 by aindjare         ###   ########.fr       */
+/*   Updated: 2024/05/14 13:35:31 by aindjare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,9 +69,10 @@ int				xb_strhas(const char *hay, char needle);
 int				xb_strnhas(const char *hay, char needle, int count);
 
 char			*xb_strdup(const char *src);
+char			*xb_strndup(const char *src, int count);
+
 char			*xb_strjoin(const char *lhs, const char *rhs);
 char			*xb_strslice(const char *src, int offset, int length);
-
 char			**xb_strsplit(const char *src, char c);
 
 char			*xb_sprintf(const char *format, ...);
@@ -82,8 +83,14 @@ void			xb_free_list(int count, void **list);
 void			*xb_bzero(void *area, int count);
 void			*xb_memset(void *area, char byte, int count);
 
+int				xb_atoi(const char *src);
+double			xb_atod(const char *src);
+
+double			xb_unix_uptime(void);
+char			*xb_unix_read_fd(int fd);
+char			*xb_unix_read_file(const char *file_path);
+
 /* TODOS:
-	char			*xb_readfd(int fd);
 	char			*xb_readline(int fd);
 	char			**xb_split_char(const char *s, char delimiter);
 	char			**xb_split_str(const char *s, const char *delimiter);

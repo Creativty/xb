@@ -6,12 +6,13 @@
 /*   By: aindjare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 14:05:17 by aindjare          #+#    #+#             */
-/*   Updated: 2024/05/13 15:24:47 by aindjare         ###   ########.fr       */
+/*   Updated: 2024/05/14 13:14:23 by aindjare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #ifndef XB_INTERNAL_H
 # define XB_INTERNAL_H
 # include "xb.h"
+# define UNIX_READ_BUFFER_SIZE 1024
 
 typedef struct s_printf_token
 {
@@ -54,4 +55,6 @@ t_printf_token	xb_token_from_addr(t_printf_infos infos);
 t_printf_token	xb_token_from_idec(t_printf_infos infos);
 t_printf_token	xb_token_from_udec(t_printf_infos infos);
 t_printf_token	xb_token_from_uhex(t_printf_infos infos);
+
+int				xb_internal_atoi(const char *src, int accept_signs);
 #endif
